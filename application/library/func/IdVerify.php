@@ -1,5 +1,5 @@
 <?php
-namespace application\library;
+namespace library\func;
 
 class IdVerify
 {
@@ -9,9 +9,9 @@ class IdVerify
 	 * 防止创建对象
 	 */
 	private function __construct()
-	{
-		throw new Exception('Singleton can not be constructed');
-	}
+    {
+        return $this;
+    }
 
 	/**
 	 * 单例构造方法
@@ -58,15 +58,15 @@ class IdVerify
 		return $status;
 	}
 
-	/**
-	 * 计算身份证校验码，根据国家标准GB 11643-1999
-	 *
-	 * @param $idcard_base
-	 * @return bool
-	 */
-	private function idcardVerifyNumber(string $idcard_base)
+    /**
+     * 计算身份证校验码，根据国家标准GB 11643-1999
+     *
+     * @param string $idCardBase
+     * @return bool
+     */
+	private function idcardVerifyNumber(string $idCardBase)
 	{
-		if(strlen($idcard_base) !== 17)
+		if(($len = strlen($idCardBase)) !== 17)
 		{
 			return false;
 		}
@@ -77,9 +77,10 @@ class IdVerify
 		//校验码对应值
 		$verifyNumberList = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
 		$checksum = 0;
-		for($i = 0; $i < strlen($idcard_base); $i++)
+		for($i = 0; $i < $len; $i++)
 		{
-			$checksum .= substr($idcard_base, $i, 1) * $factor[$i];
+            /** @var TYPE_NAME $checksum */
+            $checksum += substr($idCardBase, $i, 1) * $factor[$i];
 		}
 
 		$mod = $checksum % 11;
@@ -120,15 +121,15 @@ class IdVerify
 	 * @param $idcard
 	 * @return bool
 	 */
-	private function idcardChecksum18($idcard)
+	private function idcardChecksum18($idCard)
 	{
-		if(strlen($idcard) !== 18)
+		if(strlen($idCard) !== 18)
 		{
 			return false;
 		}
 
-		$idcard_base = substr($idcard, 0, 17);
-		if ($this->idcardVerifyNumber($idcard_base) !== strtoupper(substr($idcard, 17, 1)))
+		$idCardBase = substr($idCard, 0, 17);
+		if ($this->idcardVerifyNumber($idCardBase) !== strtoupper(substr($idCard, 17, 1)))
 		{
 			return false;
 		}
