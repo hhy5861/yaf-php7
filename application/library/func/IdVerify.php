@@ -17,7 +17,7 @@ class IdVerify implements IIdVerify
 	 * 单例构造方法
 	 * @return IdVerify
 	 */
-	public static function getInstance() : instance
+	public static function getInstance()
 	{
 		if(!self::$instance)
 		{
