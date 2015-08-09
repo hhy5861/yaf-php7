@@ -1,7 +1,7 @@
 <?php
 namespace library\func;
 
-class IdVerify
+class IdVerify implements IIdVerify
 {
 	private static $instance;
 
@@ -17,7 +17,7 @@ class IdVerify
 	 * 单例构造方法
 	 * @return IdVerify
 	 */
-	public static function getInstance()
+	public static function getInstance() : instance
 	{
 		if(!self::$instance)
 		{
@@ -35,7 +35,7 @@ class IdVerify
 		trigger_error('Clone is not allow' ,E_USER_ERROR);
 	}
 
-	public function validationCardId(string $cardId)
+	public function validationCardId(string $cardId) : bool
 	{
 		$strlen = strlen($cardId);
 
@@ -64,7 +64,7 @@ class IdVerify
      * @param string $idCardBase
      * @return bool
      */
-	private function idcardVerifyNumber(string $idCardBase)
+	private function idcardVerifyNumber(string $idCardBase): string
 	{
 		if(($len = strlen($idCardBase)) !== 17)
 		{
@@ -93,7 +93,7 @@ class IdVerify
 	 * @param $idcard
 	 * @return bool|string
 	 */
-	private function idcard15tTo18(string $idcard)
+	private function idcard15tTo18(string $idcard): string
 	{
 		if(strlen($idcard) != 15)
 		{
@@ -121,7 +121,7 @@ class IdVerify
 	 * @param $idcard
 	 * @return bool
 	 */
-	private function idcardChecksum18($idCard)
+	private function idcardChecksum18(string $idCard) : bool
 	{
 		if(strlen($idCard) !== 18)
 		{

@@ -11,22 +11,20 @@ use library\func\IdVerify;
 class IndexController extends Yaf_Controller_Abstract
 {
 
-	public function indexAction()
+	public function indexAction($cardId = '')
 	{
-        $msg = '';
 
-        $postArr = $this->getRequest()->getPost();
-        if($postArr['cardId'])
+        $str    = false;
+        $cardId = $this->getRequest()->getPost()['cardId'];
+
+        $cardId && $str = IdVerify::getInstance()->validationCardId($cardId);
+        if($str === true)
         {
-            $str = IdVerify::getInstance()->validationCardId($postArr['cardId']);
-            if($str === true)
-            {
-                $msg = '这是有效身份证';
-            }
-            else
-            {
-                $msg = '这是无效身份证';
-            }
+            $msg = '这是有效身份证：【'.$cardId.'】';
+        }
+        else
+        {
+            $msg = '这是无效身份证：【'.$cardId.'】';
         }
 
         $this->getView()->assign('message', $msg);
