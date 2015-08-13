@@ -61,12 +61,12 @@ class IdVerify implements IIdVerify
     /**
      * 计算身份证校验码，根据国家标准GB 11643-1999
      *
-     * @param string $idCardBase
+     * @param string|string $idCardBase
      * @return bool
      */
 	private function idcardVerifyNumber(string $idCardBase): string
 	{
-		if(($len = strlen($idCardBase)) !== 17)
+		if(($len = strlen($idCardBase)) !== 17 || !is_numeric($idCardBase))
 		{
 			return false;
 		}
@@ -79,7 +79,6 @@ class IdVerify implements IIdVerify
 		$checksum = 0;
 		for($i = 0; $i < $len; $i++)
 		{
-            /** @var TYPE_NAME $checksum */
             $checksum += substr($idCardBase, $i, 1) * $factor[$i];
 		}
 

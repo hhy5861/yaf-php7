@@ -11,5 +11,5 @@ namespace library\func;
 
 interface IIdVerify
 {
-    public static function getInstance(): instance;
+    public static function getInstance();
 }
