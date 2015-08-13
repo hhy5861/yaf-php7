@@ -1,28 +1,12 @@
 {
-    "name": "yaf/extras",
-    "type": "library",
-    "description": "Extras package for the Yet Another Framework",
-    "keywords": ["yaf", "restful", "extensions", "view", "twig"],
-    "homepage": "http://github.com/rhyzx/php-yaf-extras",
-    "license": "MIT",
-    "authors": [
-    {
-        "name": "rhyzx",
-        "email": "rhyzix@gmail.com",
-        "homepage": "http://github.com/rhyzx"
-    }
-],
-    "require": {
-    "php": ">=5.3.0"
-},
-    "autoload": {
-    "psr-0": {
-        "Yaf\\Extras\\": "."
-    },
-    "psr-4": {
-      "app\\library\\twig\\": "application/library/twig/",
-      "app\\business\\func\\" :"application/business/func/"
-    }
-},
-    "target-dir": "Yaf/Extras"
+
+  "require": {
+              "php": ">=5.3.0"
+             },
+
+  "autoload": {
+              "psr-4": {
+                        "app\\business\\func\\" :"application/business/func/"
+                       }
+              }
 }

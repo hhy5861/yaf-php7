@@ -6,11 +6,14 @@
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
 
+use app\business\func\Test;
+
 class TestController extends Yaf_Controller_Abstract
 {
 	public function listAction(int $id = 1): bool
     {
-        echo 'ths is test' . $id;
+        $result = (new Test())->data($id);
+        var_dump($result);
         return false;
 	}
 }

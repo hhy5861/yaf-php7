@@ -6,7 +6,7 @@
  * Time: 12:45 PM
  */
 
-namespace library\func;
+namespace app\business\func;
 
 
 interface IIdVerify

@@ -1,5 +1,5 @@
 <?php
-namespace library\func;
+namespace app\business\func;
 
 class IdVerify implements IIdVerify
 {

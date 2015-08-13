@@ -1,12 +1,11 @@
 <?php
-namespace controllers;
 /**
  * @name IndexController
  * @author Mike
  * @desc 默认控制器
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
-use library\func\IdVerify;
+use app\business\func\IdVerify;
 
 class IndexController extends \Yaf_Controller_Abstract
 {

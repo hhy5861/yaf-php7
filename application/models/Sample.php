@@ -16,8 +16,8 @@ class SampleModel
         return 'Hello World!';
     }
 
-    public function insertSample(srting $arrInfo)
+    public function insertSample(string $arrInfo) : array
     {
-        return $arrInfo;
+        return [$arrInfo];
     }
 }
