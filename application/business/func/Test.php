@@ -6,7 +6,7 @@
  * Time: 12:35 AM
  */
 
-namespace app\business\func;
+namespace App\business\func;
 
 class Test
 {

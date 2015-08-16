@@ -6,7 +6,7 @@
  * Time: 12:45 PM
  */
 
-namespace app\business\func;
+namespace App\business\func;
 
 
 interface IIdVerify

@@ -6,7 +6,7 @@
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
 
-use app\business\func\Test;
+use App\business\func\Test;
 
 class TestController extends Yaf_Controller_Abstract
 {
@@ -16,4 +16,15 @@ class TestController extends Yaf_Controller_Abstract
         var_dump($result);
         return false;
 	}
+
+    public function phpInfoAction(): bool
+    {
+        $obj = App::createObject(['class' => 'App\business\func\Func',
+                                  'type'  => 'Jeson',
+                                 ]);
+
+        $result = $obj->baseList([1 => 'Mike']);
+        var_dump($result);
+        return false;
+    }
 }
