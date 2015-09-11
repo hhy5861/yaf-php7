@@ -6,16 +6,16 @@
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
 
-class IndexController extends \Yaf_Controller_Abstract {
+class WeixinController extends \Yaf_Controller_Abstract {
 
 	public function indexAction() {
 		$files = '<br/>';
 		$failFile = '<br/>';
 		$extArr = ['php', 'phtml', 'js', 'css', 'png', 'jpg', 'csv'];
-		$name = 'base-' . date('Y-m-d-H-i', time()) . '.zip ./*';
-		$dir = '/Volumes/web/base/';
-		$filePath = '/Volumes/web/php/yiban-base/';
-		$file = '/Volumes/web/php/yaf-php7/doc/base.txt';
+		$name = 'gzpt-' . date('Y-m-d-H-i', time()) . '.zip ./*';
+		$dir = '/Volumes/web/weixin/';
+		$filePath = '/Volumes/web/php/weixin/';
+		$file = '/Volumes/web/php/yaf-php7/doc/weixin.txt';
 		$commet = file_get_contents($file);
 		$commetArr = array_unique(explode("\n", $commet));
 		$shell = '';
