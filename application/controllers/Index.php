@@ -6,75 +6,29 @@
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
 
-class IndexController extends \Yaf_Controller_Abstract {
+class IndexController extends \Yaf_Controller_Abstract
+{
 
-	public function indexAction() {
-		$files = '<br/>';
-		$failFile = '<br/>';
-		$extArr = ['php', 'phtml', 'js', 'css', 'png', 'jpg', 'csv'];
-		$name = 'base-' . date('Y-m-d-H-i', time()) . '.zip ./*';
-		$dir = '/Volumes/web/base/';
-		$filePath = '/Volumes/web/php/yiban-base/';
-		$file = '/Volumes/web/php/yaf-php7/doc/base.txt';
-		$commet = file_get_contents($file);
-		$commetArr = array_unique(explode("\n", $commet));
-		$shell = '';
-		foreach ($commetArr as $v) {
-			if (!trim($v)) {
-				continue;
-			}
+	public function indexAction(int $id): bool
+    {
+        echo '<pre>';
 
-			$f = explode('/', $v);
-			$num = count($f);
-			if ($num > 1) {
-				unset($f[$num - 1]);
-				$th = implode('/', $f);
-				$proDir = $dir . $th . '/';
-				$this->mkdir_r($proDir);
-				$source = $filePath . $v;
-				if (in_array($this->ext($v), $extArr) && file_exists($source)) {
-					$files .= $v . '<br/>';
-					$shell .= 'sudo cp -f ' . $source . ' ' . $proDir . ' && ';
-				} else {
-					$failFile .= $source . '<br>';
-				}
-			} else {
-				if (in_array($this->ext($v), $extArr)) {
-					$sour = $filePath . $v;
-					if (file_exists($sour)) {
-						$files .= $v . '<br/>';
-						$shell .= 'sudo cp -f ' . $sour . ' ' . $dir . ' && ';
-					} else {
-						$failFile .= $sour . '<br>';
-					}
-				} else {
-					$files .= $v . '<br/>';
-					$shell .= 'sudo cp -rf ' . $filePath . $v . ' ' . $dir . ' && ';
-				}
-			}
-		}
+        if(1 <=> 2 === -1)
+        {
+            echo 'Yes';
+        }
+        else
+        {
+            echo 'No';
+        }
 
-		echo '成功拷贝：' . $files . '<hr>';
-		echo '失败文件：' . $failFile . '<hr>';
-		$shell .= 'cd ' . $dir . '&& sudo zip -r ' . $name;
-		print 'shell命令：<br>' . $shell;
-		return false;
+        return true;
 	}
 
-	function mkdir_r($dirName, $rights = 0777) {
-		$dirs = explode('/', $dirName);
-		$dir = '';
-		foreach ($dirs as $part) {
-			$dir .= $part . '/';
-			if (!is_dir($dir) && strlen($dir) > 0) {
-				mkdir($dir, $rights, 1);
-			}
+    public function listAction(int $rid): array
+    {
+        $arr = [1,2,3,4,5,6];
 
-		}
-	}
-
-	function ext($file) {
-		return substr(strrchr($file, '.'), 1);
-	}
-
+        return $arr;
+    }
 }

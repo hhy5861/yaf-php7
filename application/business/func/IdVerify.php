@@ -115,12 +115,13 @@ class IdVerify implements IIdVerify
 		return $idcard . $this->idcardVerifyNumber($idcard);
 	}
 
-	/**
-	 * 18位身份证校验码有效性检查
-	 *
-	 * @param $idcard
-	 * @return bool
-	 */
+    /**
+     * 18位身份证校验码有效性检查
+     *
+     * @param string|string $idCard
+     * @return bool|bool
+     * @internal param $idcard
+     */
 	private function idcardChecksum18(string $idCard) : bool
 	{
 		if(strlen($idCard) !== 18)

@@ -10,7 +10,7 @@ namespace App\library\base;
 use App;
 use Exception;
 
-class Object implements Configurable
+abstract class Object implements Configurable
 {
 
     public static function className()
