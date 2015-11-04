@@ -9,7 +9,11 @@
 class IndexController extends \Yaf_Controller_Abstract
 {
 
-	public function indexAction(int $id): bool
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function indexAction(int $id): bool
     {
         echo '<pre>';
 
@@ -30,5 +34,10 @@ class IndexController extends \Yaf_Controller_Abstract
         $arr = [1,2,3,4,5,6];
 
         return $arr;
+    }
+
+    public function getDbAction()
+    {
+        return false;
     }
 }
